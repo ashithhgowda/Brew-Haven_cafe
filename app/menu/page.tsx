@@ -31,7 +31,7 @@ export default function MenuPage() {
         {/* Header */}
         <header className="mb-14 text-center">
           <span className="inline-block text-[11px] uppercase tracking-[0.25em] text-amber-500/70 mb-4">
-            Brew Haven · Est. 2018
+            Brew Haven · Est. 2026
           </span>
           {/* decorative line */}
           <div className="mx-auto mb-5 flex items-center gap-3 justify-center">
