@@ -6,7 +6,7 @@ export default function About() {
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
         {/* Image */}
-        <div className="relative overflow-hidden rounded-2xl border border-amber-900/25 shadow-2xl shadow-black/50 group">
+        <div className="relative overflow-hidden rounded-2xl border border-amber-900/25 shadow-2xl shadow-black/50 group order-2 lg:order-1">
           <Image
             src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80"
             alt="Warm and cozy Brew Haven cafe interior"
@@ -19,7 +19,7 @@ export default function About() {
         </div>
 
         {/* Text */}
-        <div className="space-y-6">
+        <div className="space-y-6 order-1 lg:order-2">
 
           {/* Label + ornament */}
           <div className="flex items-center gap-3">
@@ -50,7 +50,11 @@ export default function About() {
           </p>
 
           {/* Stats row */}
-          <div className="grid grid-cols-3 gap-4 pt-2">
+          
+
+        </div>
+      </div>
+      <div className="mx-auto w-full max-w-6xl mt-10 grid grid-cols-3 gap-4 pt-2">
             {[
               { value: "6+", label: "Years serving" },
               { value: "40+", label: "Menu items" },
@@ -62,9 +66,6 @@ export default function About() {
               </div>
             ))}
           </div>
-
-        </div>
-      </div>
     </section>
   );
 }

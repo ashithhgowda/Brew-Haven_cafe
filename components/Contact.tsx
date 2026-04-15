@@ -12,6 +12,7 @@ export default function Contact() {
     message?: string;
     date?: string;
     time: FormDataEntryValue | null;
+    reservedCount: FormDataEntryValue | null;
   }) => {
     const newErrors: Record<string, string> = {};
     if (!data.name) newErrors.name = "Name is required";
@@ -23,6 +24,7 @@ export default function Contact() {
     if (!data.message) newErrors.message = "Message is required";
     if (!data.date) newErrors.date = "Select a date";
     if (!data.time) newErrors.time = "Select a time";
+    if (!data.reservedCount) newErrors.reservedCount = "Select a number of people";
     return newErrors;
   };
 
@@ -35,6 +37,7 @@ export default function Contact() {
       message: formData.get("message")?.toString().trim(),
       date: selectedDate,
       time: formData.get("time"),
+      reservedCount: formData.get("reservedCount"),
     };
     const validationErrors = validate(data);
     if (Object.keys(validationErrors).length > 0) {
@@ -43,7 +46,7 @@ export default function Contact() {
     }
     setErrors({});
     const text = encodeURIComponent(
-      `Hello, I'm ${data.name}\nEmail: ${data.email}\nDate: ${data.date}\nTime: ${data.time}\n\nMessage:\n${data.message}`
+      `Hello, I'm ${data.name}\nEmail: ${data.email}\nDate: ${data.date}\nTime: ${data.time}\nNumber of Guests: ${data.reservedCount}\n\nMessage:\n${data.message}`
     );
     const phoneNumber = "6363256821";
     window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
@@ -170,7 +173,41 @@ export default function Contact() {
                   )}
                 </div>
               </div>
+              {/* Number of Guests */}
+              <div>
+                <label
+                  htmlFor="contact-reservedCount"
+                  className="mb-1.5 block text-[11px] uppercase tracking-wider text-amber-500/50"
+                >
+                  Number of Guests
+                </label>
 
+                <select
+                  id="contact-reservedCount"
+                  name="reservedCount"
+                  defaultValue=""
+                  aria-label="Number of Guests"
+                  aria-invalid={Boolean(errors.reservedCount)}
+                  className={`${inputCls} cursor-pointer`}
+                >
+                  <option value="" disabled>Select number of people</option>
+                  <option value="1">1 Person</option>
+                  <option value="2">2 People</option>
+                  <option value="3">3 People</option>
+                  <option value="4">4 People</option>
+                  <option value="5">5 People</option>
+                  <option value="6">6 People</option>
+                  <option value="7">7 People</option>
+                  <option value="8">8+ People</option>
+                </select>
+
+                {errors.reservedCount && (
+                  <p className="mt-1.5 text-[12px] text-red-400/90">
+                    {errors.reservedCount}
+                  </p>
+                )}
+              </div>
+              
               {/* Message */}
               <div>
                 <label htmlFor="contact-message" className="sr-only">Message</label>
@@ -208,8 +245,8 @@ export default function Contact() {
             {/* Info cards */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {[
-                { icon: "📍", label: "Location", value: "Bengaluru, India" },
-                { icon: "📞", label: "Phone", value: "+91 63632 56821" },
+                { icon: "📍", label: "Location", value: "Mangaluru, India" },
+                { icon: "📞", label: "Phone", value: "+91 63632 XXXXX" },
                 { icon: "🕐", label: "Hours", value: "9 AM – 9 PM daily" },
               ].map(({ icon, label, value }) => (
                 <div
@@ -227,7 +264,7 @@ export default function Contact() {
             <div className="flex-1 overflow-hidden rounded-2xl border border-amber-900/25 shadow-xl shadow-black/40 min-h-[260px]">
               <iframe
                 title="Brew Haven cafe location on Google Maps"
-                src="https://www.google.com/maps?q=Bengaluru%20India&output=embed"
+                src="https://www.google.com/maps?q=Mangaluru%20India&output=embed"
                 loading="lazy"
                 className="h-full w-full min-h-[260px] border-0"
               />

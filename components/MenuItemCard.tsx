@@ -15,7 +15,7 @@ export default function MenuItemCard({ item }: Props) {
           src={item.image}
           alt={item.name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 "
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
         />
         {/* Dark scrim at bottom so text is always readable */}
@@ -37,15 +37,15 @@ export default function MenuItemCard({ item }: Props) {
         <div>
           <div className="my-4 h-px w-full bg-gradient-to-r from-amber-900/50 to-transparent" />
           <div className="flex items-center justify-between">
-            <span className="font-serif text-xl font-semibold text-amber-400">
-              ${item.price.toFixed(2)}
+            <span className=" text-xl font-semibold text-amber-400">
+            ₹{item.price.toFixed(2)}
             </span>
-            <button
+            {/* <button
               type="button"
               className="rounded-lg border border-amber-700/30 bg-amber-900/20 px-4 py-1.5 text-[12px] uppercase tracking-wider text-amber-400/80 hover:bg-amber-700/30 hover:text-amber-300 hover:border-amber-600/50 transition-all duration-200"
             >
               Add
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
